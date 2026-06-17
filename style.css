@@ -124,25 +124,45 @@ html, body {
     transform: translateY(0);
 }
 
+/* ==========================================
+   PERBAIKAN NAVBAR ANIMASI & UNDERLINE DI SINI
+   ========================================== */
 .nav-link {
-    transition: all 0.3s ease;
     position: relative;
+    padding-bottom: 4px; /* Jarak teks ke garis */
+    color: white;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease;
 }
 
+/* Membuat garis bawah yang awalnya tersembunyi dari tengah */
 .nav-link::after {
     content: '';
     position: absolute;
     bottom: -4px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 2px;
     background: linear-gradient(90deg, #f59e0b, #f97316);
-    transition: width 0.3s ease;
+    transition: width 0.3s ease-in-out;
+    border-radius: 2px;
 }
 
-.nav-link:hover::after {
+/* Memunculkan garis bawah saat disentuh atau menu sedang aktif */
+.nav-link:hover::after, 
+.nav-link.active::after, 
+.nav-link.text-amber-400::after {
     width: 100%;
 }
+
+/* Mengubah teks jadi kuning menyala saat disentuh atau aktif */
+.nav-link:hover, 
+.nav-link.active, 
+.nav-link.text-amber-400 {
+    color: #fbbf24 !important;
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+}
+/* ========================================== */
 
 .success-notification {
     display: none;
@@ -352,11 +372,6 @@ nav.scrolled {
 
 .glass-card:hover::before {
     left: 100%;
-}
-
-/* Nav Link Active State */
-.nav-link.text-amber-400::after {
-    width: 100%;
 }
 
 /* FIX: Menyembunyikan watermark besar khusus di HP agar layout tidak geser */
