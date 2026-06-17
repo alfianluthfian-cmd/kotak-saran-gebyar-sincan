@@ -30,200 +30,66 @@
         <div class="glass-card rounded-2xl p-8 max-w-md mx-auto text-center">
             <div class="text-6xl mb-4">✅</div>
             <h3 class="text-2xl font-bold text-white mb-2">Terima Kasih!</h3>
-            <p class="text-white/90">Saran Anda telah berhasil dikirim ke panitia.</p>
+            <p class="text-white/90">Saran Anda telah berhasil masuk ke database panitia.</p>
         </div>
     </div>
 
     <div class="relative z-10 min-h-screen flex items-center justify-center p-4 py-8 md:py-12">
         <div class="glass-card rounded-3xl p-6 md:p-10 lg:p-12 w-full max-w-4xl">
             <div class="text-center mb-10">
-                <h1 class="text-6xl md:text-8xl font-extrabold mb-4 title-gradient glow-effect title-pulse scroll-animate-scale">
-                    Gebyar Sincan 2026
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-bold text-white mt-4 mb-3 scroll-animate-fade stagger-1">
-                    Kotak Saran
-                </h2>
-                <div class="flex items-center justify-center gap-2 mb-4 scroll-animate-fade stagger-2">
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-4 title-gradient glow-effect title-pulse scroll-animate-scale">Gebyar Sincan 2026</h1>
+                <h2 class="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">Kotak Saran</h2>
+                <div class="flex items-center justify-center gap-2 mb-4">
                     <div class="h-px w-16 bg-gradient-to-r from-transparent to-amber-500"></div>
                     <span class="text-amber-400 text-2xl">⚜</span>
                     <div class="h-px w-16 bg-gradient-to-l from-transparent to-amber-500"></div>
                 </div>
-                <p class="text-white/80 mt-4 text-base md:text-lg max-w-2xl mx-auto scroll-animate stagger-3">
-                    Suaramu, Semangat Kami. Bantu kami jadi lebih baik! Setiap orang hanya bisa mengirim 1 saran.
-                </p>
             </div>
 
-            <div id="alreadySubmitted" class="hidden text-center py-8 scroll-animate-scale">
+            <div id="alreadySubmitted" class="hidden text-center py-8">
                 <div class="text-6xl mb-4">📬</div>
                 <h3 class="text-2xl font-bold text-white mb-2">Saran Sudah Terkirim</h3>
-                <p class="text-white/80 text-base md:text-lg max-w-xl mx-auto">
-                    Kamu sudah mengirim saran. Terima kasih atas masukanmu untuk Gebyar Sincan!
-                </p>
             </div>
 
-            <form action="https://script.google.com/macros/s/AKfycbyQzJtB-1mO53QxS1d3wR1mQ6-oA4Bv_s_V-9qTz4sR5o3Cg1Gz8P2zPq-7JvP1z/exec" method="POST" id="saranForm" class="space-y-7">
-                
-                <div class="space-y-3 scroll-animate-rotate stagger-4">
-                    <label class="block text-white font-bold text-base md:text-lg">
-                        Saran & Kritik untuk Gebyar Sincan tahun depan <span class="text-red-400">*</span>
-                    </label>
-                    <textarea 
-                        name="saran_kritik" 
-                        required 
-                        rows="8" 
-                        class="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 textarea-custom focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
-                        placeholder="Tuliskan saran dan kritik Anda di sini untuk perbaikan Gebyar Sincan tahun depan..."
-                    ></textarea>
+            <form action="https://script.google.com/macros/s/AKfycbxbuHXDNy1dNWD0ifHR8G2LvH0UT2uP2cPVwkQnWGvA1r_JyOj9ho_qAyIkk4WF0Pqo/exec" method="POST" id="saranForm" class="space-y-7">
+                <div class="space-y-3">
+                    <label class="block text-white font-bold text-base md:text-lg">Saran & Kritik <span class="text-red-400">*</span></label>
+                    <textarea name="saran_kritik" required rows="8" class="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none" placeholder="Tuliskan saran Anda di sini..."></textarea>
                 </div>
-
-                <div class="pt-6 scroll-animate-scale stagger-5">
-                    <button 
-                        type="submit" 
-                        id="submitBtn"
-                        class="btn-submit w-full text-white font-bold py-4 px-6 rounded-xl text-lg md:text-xl flex items-center justify-center gap-3"
-                    >
-                        <span class="text-2xl">⚜️</span>
+                <div class="pt-6">
+                    <button type="submit" id="submitBtn" class="btn-submit w-full text-white font-bold py-4 px-6 rounded-xl text-lg md:text-xl flex items-center justify-center gap-3">
                         <span id="btnText">Kirim Saran</span>
                     </button>
                 </div>
             </form>
-
-            <div class="mt-10 pt-6 border-t border-white/20 text-center space-y-4 scroll-animate-fade stagger-6">
-                <div class="text-white/90 text-sm md:text-base space-y-2">
-                    <p>
-                        <a href="https://wa.me/62895359573013" target="_blank" class="hover:text-amber-400 transition-colors inline-flex items-center gap-2">
-                            <span>📱</span>
-                            <span>WhatsApp: 0895359573013</span>
-                        </a>
-                    </p>
-                    <p>
-                        <a href="mailto:sincan.siap04@gmail.com" class="hover:text-amber-400 transition-colors inline-flex items-center gap-2">
-                            <span>✉️</span>
-                            <span>Email: sincan.siap04@gmail.com</span>
-                        </a>
-                    </p>
-                </div>
-                <p class="text-white/60 text-xs md:text-sm mt-6">
-                    © 2026 Panitia Gebyar Sincan
-                </p>
-            </div>
         </div>
     </div>
 
     <script>
-        const SARAN_STORAGE_KEY = 'gebyar_sincan_2026_saran_submitted';
-        const saranForm = document.getElementById('saranForm');
-        const alreadySubmitted = document.getElementById('alreadySubmitted');
-        const notification = document.getElementById('successNotification');
+        const form = document.getElementById('saranForm');
         const submitBtn = document.getElementById('submitBtn');
         const btnText = document.getElementById('btnText');
+        const successNotification = document.getElementById('successNotification');
 
-        function showAlreadySubmitted() {
-            saranForm.classList.add('hidden');
-            alreadySubmitted.classList.remove('hidden');
-            alreadySubmitted.classList.add('animated');
-        }
-
-        if (localStorage.getItem(SARAN_STORAGE_KEY) === 'true') {
-            showAlreadySubmitted();
-        }
-
-        saranForm.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
-
-            if (localStorage.getItem(SARAN_STORAGE_KEY) === 'true') {
-                showAlreadySubmitted();
-                return;
-            }
-
-            // Ubah tombol jadi "Mengirim..."
             submitBtn.disabled = true;
-            submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
             btnText.innerText = "Mengirim...";
 
-            const form = this;
-            const formData = new FormData(form);
-
-            // PERBAIKAN: Menggunakan URLSearchParams dan mode no-cors agar data sukses masuk ke Sheets
             fetch(form.action, {
                 method: 'POST',
-                body: new URLSearchParams(formData),
+                body: new FormData(form),
                 mode: 'no-cors'
-            })
-            .then(response => {
-                // Berhasil mengirim data ke Google Sheets
-                localStorage.setItem(SARAN_STORAGE_KEY, 'true');
-                notification.classList.add('show');
-                showAlreadySubmitted();
-
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 5000);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Gagal mengirim saran. Periksa koneksi internet kamu.');
+            }).then(() => {
+                successNotification.classList.add('show');
+                form.reset();
                 submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
                 btnText.innerText = "Kirim Saran";
-            });
-        });
-
-        // Add smooth scroll behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-animate, .scroll-animate-fade, .scroll-animate-slide-left, .scroll-animate-slide-right, .scroll-animate-scale, .scroll-animate-rotate').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Navbar scroll effect
-        let lastScroll = 0;
-        const navbar = document.querySelector('nav');
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            if (currentScroll > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            lastScroll = currentScroll;
-        });
-
-        // Add entrance animation to form on load
-        window.addEventListener('load', () => {
-            const formElements = document.querySelectorAll('.scroll-animate, .scroll-animate-fade, .scroll-animate-scale, .scroll-animate-rotate');
-            formElements.forEach((el, index) => {
-                setTimeout(() => {
-                    if (el.getBoundingClientRect().top < window.innerHeight) {
-                        el.classList.add('animated');
-                    }
-                }, index * 100);
+                setTimeout(() => successNotification.classList.remove('show'), 5000);
+            }).catch(err => {
+                alert("Gagal. Pastikan koneksi internet stabil.");
+                submitBtn.disabled = false;
+                btnText.innerText = "Kirim Saran";
             });
         });
     </script>
