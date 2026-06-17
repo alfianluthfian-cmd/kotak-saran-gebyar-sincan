@@ -11,12 +11,10 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-scout">
-    <!-- Watermark Icons -->
     <div class="scout-watermark scout-watermark-1">⚜</div>
     <div class="scout-watermark scout-watermark-2">⚜</div>
     <div class="scout-watermark scout-watermark-3">⚜</div>
 
-    <!-- Navigation Bar (SUDAH DIPERBAIKI: Ke tengah & Home digarisbawahi) -->
     <nav class="relative z-20 backdrop-blur-md bg-white/5 border-b border-white/10 py-4 px-4 md:px-6 w-full">
         <div class="max-w-7xl mx-auto flex justify-center">
             <div class="flex justify-center items-center gap-4 md:gap-8 text-white text-sm md:text-base font-medium w-full">
@@ -28,19 +26,16 @@
         </div>
     </nav>
 
-    <!-- Success Notification -->
     <div id="successNotification" class="success-notification">
         <div class="glass-card rounded-2xl p-8 max-w-md mx-auto text-center">
             <div class="text-6xl mb-4">✅</div>
             <h3 class="text-2xl font-bold text-white mb-2">Terima Kasih!</h3>
-            <p class="text-white/90">Saran Anda telah berhasil dikirim. Panitia akan menindaklanjuti segera.</p>
+            <p class="text-white/90">Saran Anda telah berhasil dikirim ke panitia.</p>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="relative z-10 min-h-screen flex items-center justify-center p-4 py-8 md:py-12">
         <div class="glass-card rounded-3xl p-6 md:p-10 lg:p-12 w-full max-w-4xl">
-            <!-- Header -->
             <div class="text-center mb-10">
                 <h1 class="text-6xl md:text-8xl font-extrabold mb-4 title-gradient glow-effect title-pulse scroll-animate-scale">
                     Gebyar Sincan 2026
@@ -58,7 +53,6 @@
                 </p>
             </div>
 
-            <!-- Sudah Kirim -->
             <div id="alreadySubmitted" class="hidden text-center py-8 scroll-animate-scale">
                 <div class="text-6xl mb-4">📬</div>
                 <h3 class="text-2xl font-bold text-white mb-2">Saran Sudah Terkirim</h3>
@@ -67,13 +61,8 @@
                 </p>
             </div>
 
-            <!-- Form -->
-            <form action="https://api.web3forms.com/submit" method="POST" id="saranForm" class="space-y-7">
-                <!-- Hidden Inputs -->
-                <input type="hidden" name="access_key" value="dd9904b3-5558-4f2e-b6a2-440684ad0462">
-                <input type="hidden" name="subject" value="Saran Baru Peserta Gebyar Sincan 2026">
-
-                <!-- Saran & Kritik -->
+            <form action="https://script.google.com/macros/s/AKfycbyQzJtB-1mO53QxS1d3wR1mQ6-oA4Bv_s_V-9qTz4sR5o3Cg1Gz8P2zPq-7JvP1z/exec" method="POST" id="saranForm" class="space-y-7">
+                
                 <div class="space-y-3 scroll-animate-rotate stagger-4">
                     <label class="block text-white font-bold text-base md:text-lg">
                         Saran & Kritik untuk Gebyar Sincan tahun depan <span class="text-red-400">*</span>
@@ -87,19 +76,18 @@
                     ></textarea>
                 </div>
 
-                <!-- Submit Button -->
                 <div class="pt-6 scroll-animate-scale stagger-5">
                     <button 
                         type="submit" 
+                        id="submitBtn"
                         class="btn-submit w-full text-white font-bold py-4 px-6 rounded-xl text-lg md:text-xl flex items-center justify-center gap-3"
                     >
                         <span class="text-2xl">⚜️</span>
-                        <span>Kirim Saran</span>
+                        <span id="btnText">Kirim Saran</span>
                     </button>
                 </div>
             </form>
 
-            <!-- Footer -->
             <div class="mt-10 pt-6 border-t border-white/20 text-center space-y-4 scroll-animate-fade stagger-6">
                 <div class="text-white/90 text-sm md:text-base space-y-2">
                     <p>
@@ -127,7 +115,8 @@
         const saranForm = document.getElementById('saranForm');
         const alreadySubmitted = document.getElementById('alreadySubmitted');
         const notification = document.getElementById('successNotification');
-        const submitBtn = saranForm.querySelector('button[type="submit"]');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
 
         function showAlreadySubmitted() {
             saranForm.classList.add('hidden');
@@ -147,8 +136,10 @@
                 return;
             }
 
+            // Ubah tombol jadi "Mengirim..."
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
+            btnText.innerText = "Mengirim...";
 
             const form = this;
             const formData = new FormData(form);
@@ -159,7 +150,8 @@
             })
             .then(response => response.json())
             .then(data => {
-                if (data.success) {
+                if (data.success || data.result === "success") {
+                    // Sukses kirim
                     localStorage.setItem(SARAN_STORAGE_KEY, 'true');
                     notification.classList.add('show');
                     showAlreadySubmitted();
@@ -171,6 +163,7 @@
                     alert('Gagal mengirim saran. Silakan coba lagi.');
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+                    btnText.innerText = "Kirim Saran";
                 }
             })
             .catch(error => {
@@ -178,6 +171,7 @@
                 alert('Gagal mengirim saran. Periksa koneksi internet kamu.');
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+                btnText.innerText = "Kirim Saran";
             });
         });
 
@@ -205,8 +199,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animated');
-                    // Optional: stop observing after animation
-                    // observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
