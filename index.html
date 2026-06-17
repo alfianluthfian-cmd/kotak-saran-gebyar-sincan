@@ -31,7 +31,7 @@
     </nav>
 
     <div id="successNotification" class="success-notification">
-        <div class="glass-card rounded-2xl p-8 max-w-md mx-auto text-center">
+        <div class="glass-card rounded-2xl p-8 max-w-md mx-auto text-center border border-green-500/30">
             <div class="text-6xl mb-4">✅</div>
             <h3 class="text-2xl font-bold text-white mb-2">Terima Kasih!</h3>
             <p class="text-white/90">Saran Anda telah berhasil dikirim ke Email Panitia.</p>
@@ -68,13 +68,20 @@
             <form action="https://api.web3forms.com/submit" method="POST" id="saranForm" class="space-y-7">
                 
                 <input type="hidden" name="access_key" value="dd9904b3-5558-4f2e-b6a2-440684ad0462">
-                <input type="hidden" name="subject" value="Saran & Kritik Baru dari Peserta Gebyar Sincan">
-                <input type="hidden" name="from_name" value="Kotak Saran Gebyar Sincan">
-                <input type="hidden" name="redirect" value="javascript:void(0);">
+                <input type="hidden" name="subject" value="Saran & Kritik Baru - Gebyar Sincan 2026">
+                <input type="hidden" name="from_name" value="Kotak Saran Website">
 
                 <div class="space-y-3 scroll-animate-rotate stagger-4">
-                    <label class="block text-white font-bold text-base md:text-lg">Saran & Kritik <span class="text-red-400">*</span></label>
-                    <textarea name="saran_kritik" required rows="8" class="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 textarea-custom focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none" placeholder="Tuliskan saran dan kritik bebas Anda di sini..."></textarea>
+                    <label class="block text-white font-bold text-base md:text-lg">
+                        Saran & Kritik untuk Gebyar Sincan <span class="text-red-400">*</span>
+                    </label>
+                    <textarea 
+                        name="message" 
+                        required 
+                        rows="8" 
+                        class="w-full p-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 textarea-custom focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent resize-none"
+                        placeholder="Tuliskan saran dan kritik bebas Anda di sini..."
+                    ></textarea>
                 </div>
 
                 <div class="pt-6 scroll-animate-scale stagger-5">
@@ -117,24 +124,28 @@
                 return;
             }
 
-            // Animasi Tombol Loading
+            // Animasi Loading Tombol
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
             btnText.innerText = "Mengirim...";
 
-            const form = this;
-            const formData = new FormData(form);
+            const formData = new FormData(saranForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
 
-            // Fetch request ke API Web3Forms
+            // Kirim data menggunakan metode JSON fetch yang sangat stabil
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
             })
             .then(async (response) => {
-                let json = await response.json();
-                
+                let res = await response.json();
                 if (response.status === 200) {
-                    // Sukses Kirim
+                    // Jika sukses, simpan status di browser dan munculkan popup
                     localStorage.setItem(SARAN_STORAGE_KEY, 'true');
                     notification.classList.add('show');
                     showAlreadySubmitted();
@@ -143,23 +154,22 @@
                         notification.classList.remove('show');
                     }, 5000);
                 } else {
-                    console.log(response);
-                    alert("Gagal mengirim: " + json.message);
+                    alert("Gagal mengirim pesan: " + res.message);
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
                     btnText.innerText = "Kirim Saran";
                 }
             })
             .catch(error => {
-                console.error('Error!', error);
-                alert('Gagal terhubung. Periksa koneksi internet Anda.');
+                console.error(error);
+                alert('Terjadi kesalahan jaringan. Coba lagi nanti.');
                 submitBtn.disabled = false;
                 submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
                 btnText.innerText = "Kirim Saran";
             });
         });
 
-        // Animasi Scroll
+        // Animasi deteksi scroll halaman
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
