@@ -3,86 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kotak Saran Gebyar Sincan 2026</title>
+    <title>Daftar Lomba - Gebyar Sincan 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <style>
-        .success-notification { display: none; position: fixed; top: 20px; right: 20px; z-index: 1000; }
-        .success-notification.show { display: block; }
-    </style>
 </head>
 <body class="bg-gradient-scout">
     <div class="scout-watermark scout-watermark-1">⚜</div>
     <div class="scout-watermark scout-watermark-2">⚜</div>
-    <div class="scout-watermark scout-watermark-3">⚜</div>
 
-    <nav class="relative z-20 backdrop-blur-md bg-white/5 border-b border-white/10 py-4 px-4 md:px-6 w-full">
-        <div class="max-w-7xl mx-auto flex justify-center">
+    <nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-white/5 border-b border-white/10 py-4 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto flex justify-center w-full">
             <div class="flex justify-center items-center gap-4 md:gap-8 text-white text-sm md:text-base font-medium w-full">
-                <a href="#" class="nav-link text-amber-400">Home</a>
-                <a href="lomba.html" class="nav-link">Lomba</a>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link text-amber-400">Lomba</a>
                 <a href="https://drive.google.com/file/d/1-Ut0XHy7AjcVjMd-NeAfK5FCv9wQl7ry/view?usp=sharing" target="_blank" class="nav-link">Juklak</a>
                 <a href="kontak.html" class="nav-link">Kontak</a>
             </div>
         </div>
     </nav>
 
-    <div id="successNotification" class="success-notification">
-        <div class="bg-green-600 text-white rounded-2xl p-6 shadow-2xl text-center">
-            <div class="text-4xl mb-2">✅</div>
-            <h3 class="text-xl font-bold">Terima Kasih!</h3>
-            <p>Saran berhasil dikirim.</p>
-        </div>
-    </div>
-
-    <div class="relative z-10 min-h-screen flex items-center justify-center p-4">
-        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 w-full max-w-4xl border border-white/20">
-            <div class="text-center mb-10">
-                <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-4">Gebyar Sincan 2026</h1>
-                <h2 class="text-2xl font-bold text-amber-400">Kotak Saran</h2>
+    <div class="relative z-10 pt-28 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 scroll-animate-scale">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4 title-gradient glow-effect">
+                    CABANG LOMBA
+                </h1>
             </div>
 
-            <form action="https://script.google.com/macros/s/AKfycbxbuHXDNy1dNWD0ifHR8G2LvH0UT2uP2cPVwkQnWGvA1r_JyOj9ho_qAyIkk4WF0Pqo/exec" method="POST" id="saranForm" class="space-y-6">
-                <div class="space-y-3">
-                    <label class="block text-white font-bold text-lg">Saran & Kritik <span class="text-red-400">*</span></label>
-                    <textarea name="saran_kritik" required rows="8" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-amber-500 outline-none resize-none" placeholder="Tuliskan saran Anda di sini..."></textarea>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="lomba-card glass-card rounded-3xl overflow-hidden scroll-animate stagger-1">
+                    <div class="h-40 bg-amber-600/30 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-7xl opacity-20 absolute -right-4 -bottom-4">💂</span>
+                        <div class="text-5xl z-10">💂‍♂️</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">LKBB</h3>
+                    </div>
                 </div>
-                <button type="submit" id="submitBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 rounded-xl text-lg transition-all">
-                    <span id="btnText">Kirim Saran</span>
-                </button>
-            </form>
+
+                <div class="lomba-card glass-card rounded-3xl overflow-hidden scroll-animate stagger-2">
+                    <div class="h-40 bg-blue-600/30 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-7xl opacity-20 absolute -right-4 -bottom-4">🧠</span>
+                        <div class="text-5xl z-10">🧠</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">SI</h3>
+                    </div>
+                </div>
+
+                <div class="lomba-card glass-card rounded-3xl overflow-hidden scroll-animate stagger-3">
+                    <div class="h-40 bg-purple-600/30 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-7xl opacity-20 absolute -right-4 -bottom-4">🎬</span>
+                        <div class="text-5xl z-10">🎬</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">VLOG</h3>
+                    </div>
+                </div>
+
+                <div class="lomba-card glass-card rounded-3xl overflow-hidden scroll-animate stagger-4">
+                    <div class="h-40 bg-yellow-600/30 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-7xl opacity-20 absolute -right-4 -bottom-4">🚩</span>
+                        <div class="text-5xl z-10">🚩</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">SMS</h3>
+                    </div>
+                </div>
+
+                <div class="lomba-card glass-card rounded-3xl overflow-hidden scroll-animate stagger-5">
+                    <div class="h-40 bg-pink-600/30 flex items-center justify-center relative overflow-hidden">
+                        <span class="text-7xl opacity-20 absolute -right-4 -bottom-4">🎨</span>
+                        <div class="text-5xl z-10">🎨</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white">POSTER</h3>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
+    <footer class="mt-10 pb-10 text-center space-y-4">
+        <p class="text-white/60 text-xs md:text-sm">
+            © 2026 Panitia Gebyar Sincan
+        </p>
+    </footer>
+
     <script>
-        const form = document.getElementById('saranForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const successNotification = document.getElementById('successNotification');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            btnText.innerText = "Mengirim...";
-
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                mode: 'no-cors'
-            }).then(() => {
-                successNotification.classList.add('show');
-                form.reset();
-                submitBtn.disabled = false;
-                btnText.innerText = "Kirim Saran";
-                setTimeout(() => successNotification.classList.remove('show'), 5000);
-            }).catch(err => {
-                alert("Gagal. Pastikan internet stabil.");
-                submitBtn.disabled = false;
-                btnText.innerText = "Kirim Saran";
+        // Intersection Observer logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate, .scroll-animate-scale, .scroll-animate-fade').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
